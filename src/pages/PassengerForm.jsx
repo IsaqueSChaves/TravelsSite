@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useForm, useFormState } from "react-hook-form";
 import './PassangersForm.css';
 
-function PassengersForm({ assent, index, addData, assents, onSubmit }) {
+function PassengersForm({ assent, index, addData, assents, onSubmit, price }) {
   const { register, handleSubmit, watch, control } = useForm({
     defaultValues: {
       name: "",
@@ -118,6 +118,8 @@ function PassengersForm({ assent, index, addData, assents, onSubmit }) {
       </div>
 
       {assents.length === index + 1 ? (
+        <div>
+            <p>Total value: R${price * assents.length}</p>
         <button
           type="button"
           disabled={isValid.current}
@@ -126,6 +128,7 @@ function PassengersForm({ assent, index, addData, assents, onSubmit }) {
         >
           Submit
         </button>
+        </div>
       ) : null}
     </div>
   );

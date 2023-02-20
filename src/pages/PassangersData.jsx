@@ -9,7 +9,7 @@ function PassengersData() {
   const navigate = useNavigate();
   const location = useLocation();
   const assents = location.state.assents;
-  const place = location.state.place;
+  const data = location.state.data;
 
 
   const addData = (index, data) =>{
@@ -20,7 +20,7 @@ const onSubmit = () =>{
     navigate('/passengers', {
       state: {
         data: mapState,
-        place: place
+        place: data.place
       }});  
 }
 
@@ -35,6 +35,7 @@ const onSubmit = () =>{
             addData={addData}
             assents={assents}
             onSubmit={onSubmit}
+            price={data.price}
             />
             )})}
   </form>

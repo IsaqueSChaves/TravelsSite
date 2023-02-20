@@ -3,8 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Places from './Places';
 import './styles/AirPlane.css'
 
-function AirPlane({place}) {
+function AirPlane({place, price}) {
 
+  const data = {
+    place: place,
+    price: price
+  }
   const navigate = useNavigate();
   const [selected, setSelected] = useState([]);
   const[disable, setDisable] = useState(true);
@@ -15,7 +19,7 @@ function AirPlane({place}) {
     navigate('/data', {
       state: {
         assents: selected,
-        place: place
+        data: data
       }});
   }
 

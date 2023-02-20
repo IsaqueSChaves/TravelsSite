@@ -5,8 +5,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Slide from "@mui/material/Slide";
 import './styles/Flights.css';
 
-function Flights(props) {
-  const { place, price, img} = props;
+function Flights({ place, price, img} ) {
 
   const [arrow, setArrow] = useState(<ArrowForwardIosIcon />);
   const [expand, setExpand] = useState(false);
@@ -14,7 +13,7 @@ function Flights(props) {
   const handleClick = () => {
     setExpand(!expand);
     expand
-      ? setArrow(<ArrowForwardIosIcon size={140} />)
+      ? setArrow(<ArrowForwardIosIcon />)
       : setArrow(<ArrowBackIosIcon />);
   };
 
@@ -29,7 +28,7 @@ function Flights(props) {
       </div>
       <Slide direction="right" in={expand}>
         <div>
-          <AirPlane place={place}/>
+          <AirPlane place={place} price={price}/>
         </div>
       </Slide>
     </div>
