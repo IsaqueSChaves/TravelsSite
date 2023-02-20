@@ -9,6 +9,12 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	background-color: #E8E2E2;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+	display: none;
 }
 
 .app {
