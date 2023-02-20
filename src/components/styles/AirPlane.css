@@ -47,6 +47,12 @@
 .button:hover {
 	background-color:#71C9CE;
 }
+
+.button:disabled {
+	background-color: #BFDCE5;
+	pointer-events: none;
+}
+
 .button:active {
 	position:relative;
 	top:1px;

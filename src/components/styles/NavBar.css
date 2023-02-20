@@ -2,6 +2,11 @@ a {
 	text-decoration: none;
 }
 
+nav{
+	display: grid;
+	place-items: center;
+}
+
 .navbar-logo {
 	padding: 20px;
 	color: black;

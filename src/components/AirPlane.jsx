@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Places from './Places';
-import './AirPlane.css'
+import './styles/AirPlane.css'
 
 function AirPlane({place}) {
 

@@ -3,7 +3,7 @@ import AirPlane from "./AirPlane";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Slide from "@mui/material/Slide";
-import './Flights.css';
+import './styles/Flights.css';
 
 function Flights(props) {
   const { place, price, img} = props;

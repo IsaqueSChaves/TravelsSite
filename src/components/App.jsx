@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './NavBar';
 import Passengers from '../pages/Passengers'
 import PassengersData from '../pages/PassangersData';
-import Footer from './Footer';
 
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
             <Route path='/passengers' element={<Passengers />}/>
             <Route path='/data' element={<PassengersData />}/>
         </Routes>
-      <Footer />
     </div>
   );
 }

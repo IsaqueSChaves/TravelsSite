@@ -14,4 +14,5 @@ body {
 .app {
 	margin: 0;
 	width: 100%;
+	max-width: fit-content;
 }
