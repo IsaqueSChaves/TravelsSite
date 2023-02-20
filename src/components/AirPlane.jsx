@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import Places from './Places';
+import './AirPlane.css'
 
-function AirPlane() {
+function AirPlane({place}) {
 
   const navigate = useNavigate();
   const [selected, setSelected] = useState([]);
@@ -15,6 +15,7 @@ function AirPlane() {
     navigate('/data', {
       state: {
         assents: selected,
+        place: place
       }});
   }
 
@@ -50,7 +51,7 @@ function AirPlane() {
           toogleItem={toogleItem}
           />
           )})}
-          <button type='submit' disabled={disable}>Confirm</button>
+          <button className='button' type='submit' disabled={disable}>Confirm</button>
       </form>
     </div>
   );

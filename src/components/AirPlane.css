@@ -1,0 +1,53 @@
+.airPlane {
+	background-color: cadetblue;
+	width: 40%;
+	height: 400px;
+	position: relative;
+	left: 102%;
+	border-right: 50%;
+	border-radius: 10px;
+}
+
+.myButton {
+	background-color: #4845c7;
+	border-radius: 15px;
+	border: 1px solid;
+	display: inline-block;
+	cursor: pointer;
+	color: black;
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: 500;
+	padding: 18px 18px;
+	text-decoration: none;
+	margin: 5px 2px;
+}
+
+.myButton:hover {
+	background-color: #2a38bd;
+}
+
+.myButton:active {
+	position: relative;
+	top: 1px;
+}
+
+.button {
+	margin-top: 5px;
+	background-color:#95E1D3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:20px;
+	font-weight:bold; 
+	padding:10px 30px;
+	text-decoration:none;
+}
+.button:hover {
+	background-color:#71C9CE;
+}
+.button:active {
+	position:relative;
+	top:1px;
+}

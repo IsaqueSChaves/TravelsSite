@@ -1,0 +1,33 @@
+.passengerForm input{
+	background-color: #E8E2E2;
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+.passengerForm{
+	margin: 20px
+}
+
+.error{
+	color: #ff0000;
+}
+
+.button2 {
+	margin-top: 15px;
+	background-color: #393E46;
+	border:1px solid #222831;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial, Helvetica, sans-serif ;
+	font-size:14px;
+	padding:10px 35px;
+	text-decoration:none;
+}
+.button2:hover {
+	background-color:#222831;
+}
+.button2:active {
+	position:relative;
+	top:1px;
+}

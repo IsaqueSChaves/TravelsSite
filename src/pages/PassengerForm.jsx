@@ -1,18 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { useForm, useFormState } from "react-hook-form";
+import './PassangersForm.css';
 
 function PassengersForm({ assent, index, addData, assents, onSubmit }) {
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    control,
-  } = useForm({
+  const { register, handleSubmit, watch, control } = useForm({
     defaultValues: {
       name: "",
       age: "",
       email: "",
+      assent: assent
     },
   });
 
@@ -26,7 +22,6 @@ function PassengersForm({ assent, index, addData, assents, onSubmit }) {
   });
 
   //useEffect to validate error
-
   useEffect(() => {
     const handleError = watch((data) => {
       if (data.name.length < 2) {
@@ -41,28 +36,29 @@ function PassengersForm({ assent, index, addData, assents, onSubmit }) {
         ageError.current = false;
       }
 
-      if (!data.email.match(
-          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) 
-      {
+      if (
+        !data.email.match(
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        )
+      ) {
         emailError.current = true;
       } else {
         emailError.current = false;
       }
     });
 
-    if(emailError.current && nameError.current && ageError.current){
+    if (emailError.current && nameError.current && ageError.current) {
       isValid.current = true;
-    } else{
+    } else {
       isValid.current = false;
     }
-    console.log(isValid.current);
 
     return () => {
       handleError.unsubscribe();
     };
   }, [watch]);
 
-  //useEffect to add data 
+  //useEffect to add data
   useEffect(() => {
     const subscription = watch((data) => {
       addData(index, data);
@@ -73,7 +69,7 @@ function PassengersForm({ assent, index, addData, assents, onSubmit }) {
   }, [watch]);
 
   return (
-    <div>
+    <div className="passengerForm">
       <h3>Passanger {index + 1}</h3>
       <h4>Assent {assent + 1}</h4>
       <div class="form-row">
@@ -85,7 +81,9 @@ function PassengersForm({ assent, index, addData, assents, onSubmit }) {
             class="form-control"
             placeholder="Name"
           />
-          {touchedFields.name && nameError.current && <p className="error">Invalid input</p>}
+          {touchedFields.name && nameError.current && (
+            <p className="error">Invalid input</p>
+          )}
         </div>
 
         <div class="form-group col-md-6">
@@ -96,7 +94,9 @@ function PassengersForm({ assent, index, addData, assents, onSubmit }) {
             class="form-control"
             placeholder="Age"
           />
-          {touchedFields.age && ageError.current && <p  className="error">Invalid age</p>}
+          {touchedFields.age && ageError.current && (
+            <p className="error">Invalid age</p>
+          )}
         </div>
 
         <div class="form-group col-md-6">
@@ -111,7 +111,9 @@ function PassengersForm({ assent, index, addData, assents, onSubmit }) {
             class="form-control"
             placeholder="example@xyz.com"
           />
-          {touchedFields.email && emailError.current && <p className="error">Invalid email</p>}
+          {touchedFields.email && emailError.current && (
+            <p className="error">Invalid email</p>
+          )}
         </div>
       </div>
 
@@ -120,7 +122,7 @@ function PassengersForm({ assent, index, addData, assents, onSubmit }) {
           type="button"
           disabled={isValid.current}
           onClick={() => handleSubmit(onSubmit)()}
-          class="btn btn-primary"
+          className="button2"
         >
           Submit
         </button>

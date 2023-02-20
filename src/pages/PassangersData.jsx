@@ -9,6 +9,8 @@ function PassengersData() {
   const navigate = useNavigate();
   const location = useLocation();
   const assents = location.state.assents;
+  const place = location.state.place;
+
 
   const addData = (index, data) =>{
     setMapState(new Map(mapState.set(index, data)));
@@ -18,6 +20,7 @@ const onSubmit = () =>{
     navigate('/passengers', {
       state: {
         data: mapState,
+        place: place
       }});  
 }
 
