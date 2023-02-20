@@ -11,7 +11,7 @@ const style = {
 
 const handleClick = (id, isPressed) =>{
   setIsPressed(!isPressed);
-  toogleItem(id,isPressed);
+  toogleItem(id, isPressed);
 }
 
   return (

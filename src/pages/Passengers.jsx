@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import PassengersList from '../components/PassengersList';
 
-
 function Passengers() {
 
   const location = useLocation();

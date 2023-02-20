@@ -1,66 +1,131 @@
-import React, {useState} from 'react';
-import Error from '../components/Error'; 
+import React, { useEffect, useRef } from "react";
+import { useForm, useFormState } from "react-hook-form";
 
-function PassengersForm(props) {
-  const {assent, index, addData, mapErrorsAge, mapErrorsName, mapErrorsEmail} = props;   
+function PassengersForm({ assent, index, addData, assents, onSubmit }) {
 
-  const [errors, setErrors] = useState([]);
-  const [data, setData]= useState({
-    name:"",
-    age:"",
-    email:"",
+  const {
+    register,
+    handleSubmit,
+    watch,
+    control,
+  } = useForm({
+    defaultValues: {
+      name: "",
+      age: "",
+      email: "",
+    },
   });
 
-  const handleChange= (event)=> {
-    const { name, value } = event.target;
-    setData((prevValue) => ({
-      ...prevValue,
-      [name]: value
-    }));
-    addData(data, index);
-}
+  const nameError = useRef(false);
+  const ageError = useRef(false);
+  const emailError = useRef(false);
+  const isValid = useRef(false);
 
-if(typeof(mapErrors) != "undefined"){
-  mapErrorsName.forEach((val)=>{
-    setErrors((prevValue)=>{
-      return [...prevValue, val];
-    })});
-}
+  const { touchedFields } = useFormState({
+    control,
+  });
 
-if(typeof(mapErrors) != "undefined"){
-  mapErrorsAge.forEach((val)=>{
-    setErrors((prevValue)=>{
-      return [...prevValue, val];
-    })});
-}
+  //useEffect to validate error
 
-if(typeof(mapErrors) != "undefined"){
-  mapErrorsEmail.forEach((val)=>{
-    setErrors((prevValue)=>{
-      return [...prevValue, val];
-    })});
-}
-  
+  useEffect(() => {
+    const handleError = watch((data) => {
+      if (data.name.length < 2) {
+        nameError.current = true;
+      } else {
+        nameError.current = false;
+      }
+
+      if (data.age <= 0 || data.age > 120) {
+        ageError.current = true;
+      } else {
+        ageError.current = false;
+      }
+
+      if (!data.email.match(
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) 
+      {
+        emailError.current = true;
+      } else {
+        emailError.current = false;
+      }
+    });
+
+    if(emailError.current && nameError.current && ageError.current){
+      isValid.current = true;
+    } else{
+      isValid.current = false;
+    }
+    console.log(isValid.current);
+
+    return () => {
+      handleError.unsubscribe();
+    };
+  }, [watch]);
+
+  //useEffect to add data 
+  useEffect(() => {
+    const subscription = watch((data) => {
+      addData(index, data);
+    });
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [watch]);
+
   return (
-      <>
-        <h3>Passanger {index+1}</h3>
-        <h4>Assent {assent+1}</h4>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputName4">Name</label>
-      <input name="name" type="name" class="form-control" onChange={(event) => handleChange(event)} placeholder="Name" value={data.name}/>
-      {errors && <Error />}
+    <div>
+      <h3>Passanger {index + 1}</h3>
+      <h4>Assent {assent + 1}</h4>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputName4">Name</label>
+          <input
+            {...register("name", { required: true, minLength: 3 })}
+            type="name"
+            class="form-control"
+            placeholder="Name"
+          />
+          {touchedFields.name && nameError.current && <p className="error">Invalid input</p>}
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputAge4">Age</label>
+          <input
+            type="number"
+            {...register("age", { required: true, min: 18, max: 99 })}
+            class="form-control"
+            placeholder="Age"
+          />
+          {touchedFields.age && ageError.current && <p  className="error">Invalid age</p>}
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Email</label>
+          <input
+            {...register("email", {
+              required: true,
+              pattern:
+                /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+            })}
+            type="text"
+            class="form-control"
+            placeholder="example@xyz.com"
+          />
+          {touchedFields.email && emailError.current && <p className="error">Invalid email</p>}
+        </div>
+      </div>
+
+      {assents.length === index + 1 ? (
+        <button
+          type="button"
+          disabled={isValid.current}
+          onClick={() => handleSubmit(onSubmit)()}
+          class="btn btn-primary"
+        >
+          Sign in
+        </button>
+      ) : null}
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputAge4">Age</label>
-      <input name='age' type="number" class="form-control" onChange={(event) => handleChange(event)} placeholder="Age" value={data.age}/>
-    </div>
-  <div class="form-group">
-    <label for="inputEmail4">Email</label>
-    <input type="text" name='email' class="form-control" onChange={(event) => handleChange(event)} placeholder="example@xyz.com" value={data.email}/>
-  </div>
-  </div>
-  </>
   );
 }
 
