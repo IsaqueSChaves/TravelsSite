@@ -52,7 +52,7 @@ function Passengers() {
               </TableCell>
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">{row.age}</TableCell>
-              <TableCell align="right">{row.assent}</TableCell>
+              <TableCell align="right">{row.assent + 1}</TableCell>
               <TableCell align="right">{place}</TableCell>
 
             </TableRow>
