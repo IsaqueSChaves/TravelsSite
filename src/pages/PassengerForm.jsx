@@ -122,7 +122,7 @@ function PassengersForm({ assent, index, addData, assents, onSubmit }) {
           onClick={() => handleSubmit(onSubmit)()}
           class="btn btn-primary"
         >
-          Sign in
+          Submit
         </button>
       ) : null}
     </div>

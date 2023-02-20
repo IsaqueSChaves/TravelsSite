@@ -15,7 +15,6 @@ function Flights(props) {
 
     return (
     <div style={{ backgroundImage: `url(${img})` }} className='flights'>
-    <p>Flight number: {id}</p>
     <div className='details'>
     <h1>{place}</h1>
     <h3>R${price}</h3>

@@ -8,7 +8,7 @@ function AirPlane() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState([]);
   const[disable, setDisable] = useState(true);
-  var assents = (''+Array(10)).split(',').map(function(){return this[0]++;}, [1]);
+  var assents = (''+Array(20)).split(',').map(function(){return this[0]++;}, [1]);
 
   const handleSubmit = (event) =>{
     event.preventDefault();

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 *{
     margin: 0;
 	border: 0;
@@ -45,23 +47,21 @@ a{
 }
 
 .details h3{
-	font-weight: 900;
-	color: #1F8A70;
+	font-weight: 700;
+	color: #C9F4AA;
 }
 .airPlane{
 	background-color: cadetblue;
-	width: 200px;
+	width: 40%;
 	height: 300px;
 	position: relative;
 	left: 102%;
-	bottom: 20px;
 }
 .details h1{
-	font-weight: 900;
-	color: #03001C;
+	font-weight: 800;
+	color: #FCC2FC;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body{
 	font-family: 'Roboto', sans-serif;
@@ -173,11 +173,12 @@ li{
 	cursor:pointer;
 	color:black;
 	font-family:Arial;
-	font-size:16px;
-	font-weight:bold;
-	padding:15px 15px;
+	font-size:12px;
+	font-weight:500;
+	padding:18px 18px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #283866;
+	margin: 2px;
 }
 .myButton:hover {
 	background-color:#2a38bd;
