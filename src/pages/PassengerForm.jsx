@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import { useForm, useFormState } from "react-hook-form";
-import './PassangersForm.css';
+import "./styles/PassangersForm.css";
+import { CircularProgress } from "@mui/material/";
 
-function PassengersForm({ assent, index, addData, assents, onSubmit, price }) {
+function PassengersForm({ assent, index, addData, assents, onSubmit, price, loading }) {
   const { register, handleSubmit, watch, control } = useForm({
     defaultValues: {
       name: "",
       age: "",
       email: "",
-      assent: assent
+      assent: assent,
     },
   });
 
@@ -119,15 +120,15 @@ function PassengersForm({ assent, index, addData, assents, onSubmit, price }) {
 
       {assents.length === index + 1 ? (
         <div>
-            <p>Total value: R${price * assents.length}</p>
-        <button
-          type="button"
-          disabled={isValid.current}
-          onClick={() => handleSubmit(onSubmit)()}
-          className="button2"
-        >
-          Submit
-        </button>
+          <p>Total value: R${price * assents.length}</p>
+          <button
+            type="button"
+            disabled={isValid.current}
+            onClick={() => handleSubmit(onSubmit)()}
+            className="button2"
+          >
+            {loading? <CircularProgress />: "Submit"}
+          </button>
         </div>
       ) : null}
     </div>
