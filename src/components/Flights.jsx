@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import AirPlane from "./AirPlane";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import React, { useState } from "react";
 import Slide from "@mui/material/Slide";
+import AirPlane from "./AirPlane";
 import './styles/Flights.css';
 
-function Flights({ place, price, img} ) {
+function Flights({ place, price, img, passengers} ) {
 
   const [arrow, setArrow] = useState(<ArrowForwardIosIcon />);
   const [expand, setExpand] = useState(false);
@@ -28,7 +28,7 @@ function Flights({ place, price, img} ) {
       </div>
       <Slide direction="right" in={expand}>
         <div>
-          <AirPlane place={place} price={price}/>
+          <AirPlane place={place} price={price} passengers={passengers}/>
         </div>
       </Slide>
     </div>

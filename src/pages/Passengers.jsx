@@ -9,7 +9,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import passengerApi from "../services/passenger.service";
-import "./styles/PassangersForm.css";
+import './styles/Passengers.css'
 
 function Passengers() {
   const [passengersData, setPassengersData] = useState([]);
@@ -37,19 +37,29 @@ function Passengers() {
       <h1>Passengers</h1>
 
       {loading ? (
-        <div className="spinner">
-          <CircularProgress size={100} />
+        <div className="spinner m-18">
+          <CircularProgress size={120} />
         </div>
       ) : (
         <TableContainer>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell align="left">Name </TableCell>
-                <TableCell align="right">Email</TableCell>
-                <TableCell align="right">Age</TableCell>
-                <TableCell align="right">Assent</TableCell>
-                <TableCell align="right">Destination</TableCell>
+                <TableCell align="left">
+                  <strong>Name</strong>{" "}
+                </TableCell>
+                <TableCell align="right">
+                  <strong>Email</strong>{" "}
+                </TableCell>
+                <TableCell align="right">
+                  <strong>Age</strong>{" "}
+                </TableCell>
+                <TableCell align="right">
+                  <strong>Assent</strong>{" "}
+                </TableCell>
+                <TableCell align="right">
+                  <strong>Destination</strong>
+                </TableCell>
               </TableRow>
             </TableHead>
 

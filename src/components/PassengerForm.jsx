@@ -1,9 +1,17 @@
-import React, { useEffect, useRef } from "react";
 import { useForm, useFormState } from "react-hook-form";
-import "./styles/PassangersForm.css";
 import { CircularProgress } from "@mui/material/";
+import React, { useEffect, useRef } from "react";
+import "./styles/PassangersForm.css";
 
-function PassengersForm({ assent, index, addData, assents, onSubmit, price, loading }) {
+function PassengersForm({
+  assent,
+  index,
+  addData,
+  assents,
+  onSubmit,
+  price,
+  loading,
+}) {
   const { register, handleSubmit, watch, control } = useForm({
     defaultValues: {
       name: "",
@@ -70,11 +78,11 @@ function PassengersForm({ assent, index, addData, assents, onSubmit, price, load
   }, [watch]);
 
   return (
-    <div className="passengerForm">
+    <div className="mt-2">
       <h3>Passanger {index + 1}</h3>
       <h4>Assent {assent + 1}</h4>
-      <div class="form-row">
-        <div class="form-group col-md-6">
+      <div >
+        <div>
           <label for="inputName4">Name</label>
           <input
             {...register("name", { required: true, minLength: 3 })}
@@ -87,7 +95,7 @@ function PassengersForm({ assent, index, addData, assents, onSubmit, price, load
           )}
         </div>
 
-        <div class="form-group col-md-6">
+        <div >
           <label for="inputAge4">Age</label>
           <input
             type="number"
@@ -100,7 +108,7 @@ function PassengersForm({ assent, index, addData, assents, onSubmit, price, load
           )}
         </div>
 
-        <div class="form-group col-md-6">
+        <div >
           <label for="inputEmail4">Email</label>
           <input
             {...register("email", {
@@ -125,9 +133,9 @@ function PassengersForm({ assent, index, addData, assents, onSubmit, price, load
             type="button"
             disabled={isValid.current}
             onClick={() => handleSubmit(onSubmit)()}
-            className="button2"
+            className="button2 mt-2 mb-4" 
           >
-            {loading? <CircularProgress />: "Submit"}
+            {loading ? <CircularProgress /> : "Submit"}
           </button>
         </div>
       ) : null}

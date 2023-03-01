@@ -1,16 +1,18 @@
 import React, { useState, useRef } from "react";
+import { CircularProgress } from "@mui/material/";
 import { useNavigate } from "react-router-dom";
-import Places from "./Places";
 import "./styles/AirPlane.css";
+import Places from "./Places";
 
-function AirPlane({ place, price }) {
+function AirPlane({ place, price, passengers }) {
   const data = {
     place: place,
     price: price,
   };
-  const navigate = useNavigate();
   const [selected, setSelected] = useState([]);
   const buttonDisable = useRef(true);
+  const navigate = useNavigate();
+
   var assents = ("" + Array(20)).split(",").map(
     function () {
       return this[0]++;
@@ -46,10 +48,12 @@ function AirPlane({ place, price }) {
     }
   };
 
+  console.log(passengers.length);
+
   return (
     <div className="airPlane">
       <form onSubmit={handleSubmit}>
-        {assents.map((assent, id) => {
+        {passengers.length === 0 ?<CircularProgress / > : assents.map((assent, id) => {
           return (
             <Places
               id={id}
@@ -57,6 +61,7 @@ function AirPlane({ place, price }) {
               key={id}
               assent={assent}
               toogleItem={toogleItem}
+              passengers={passengers}
             />
           );
         })}
